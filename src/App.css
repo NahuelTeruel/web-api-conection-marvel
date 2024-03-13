@@ -1,38 +1,97 @@
-.App {
+/* Fondo oscuro */
+body {
+  margin: 0;
+  background-color: #dc5353;
+  color: #fff;
+  padding: 0;
+}
+
+/* Contenedor de tarjetas */
+.card-container {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Las tarjetas tendrán un ancho mínimo de 200px y se ajustarán automáticamente al ancho del contenedor */
+  grid-gap: 20px; /* Espacio entre las tarjetas */
+}
+
+/* Tarjetas */
+.card {
+  background-color: #000;
+  border: 2px solid #FFF;
+  border-radius: 10px;
+  display: flex; /* Usamos flexbox para alinear verticalmente el contenido */
+  flex-direction: column; /* Alineamos el contenido en columna */
+  transition: background-color 0.3s; /* Agregamos transición para suavizar el cambio de color de fondo */
+}
+
+.card:hover {
+  background-color: #ff0000; /* Cambiamos el color de fondo a rojo cuando se pasa el cursor sobre la tarjeta */
+}
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%; /* La imagen ocupará todo el ancho de la tarjeta */
+  height: auto; /* Altura automática para mantener la proporción */
+}
+
+.card-body {
+  padding: 1rem;
+  flex-grow: 1; /* Permitimos que el cuerpo de la tarjeta crezca para ocupar el espacio restante */
+  display: flex; /* Usamos flexbox para alinear verticalmente el contenido */
+  justify-content: center; /* Centramos verticalmente el contenido */
+  align-items: center; /* Centramos verticalmente el contenido */
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+/* Títulos */
+h1 {
+  color: #ff0000; /* Color rojo para un toque de Marvel */
+  background-color: grey;
+  border-radius: 50%;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* App.css */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes moveTitle {
+  0% {
+    transform: translateX(-100%); /* La imagen comienza fuera del área visible, a la izquierda */
+  }
+  50% {
+    transform: translateX(0); /* La imagen se desplaza a la posición central a la mitad de la animación */
+  }
+  100% {
+    transform: translateX(0); /* La imagen permanece en la posición central al final de la animación */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.title {
+  padding: 0;
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+  border-top: 2px solid white;
+  border-bottom: 4px solid white;
+  height: 220px;
+  width: 100%;
+  animation: moveTitle 5s linear forwards; /* Aplica la animación a la imagen */
 }
 
-.App-link {
-  color: #61dafb;
+
+
+/* Estilos para la transición de carga */
+.App.loading {
+  transition: opacity 0.5s ease-out, background-color 0.5s ease-out; /* Agrega una transición para la opacidad y el color de fondo */
+  background-color: black; /* Establece el color de fondo a negro */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Estilos para la transición de carga completa */
+.App.loaded {
+  opacity: 1;
+  transition: opacity 0.5s ease-in, background-color 0.5s ease-in; /* Agrega una transición para la opacidad y el color de fondo */
 }
+
+
